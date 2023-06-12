@@ -255,6 +255,8 @@ input[type="radio"] {
   flex-grow: 1;
 }
 
+
+
 .date {
   border: none;
   border-bottom: 1px solid #ccc;
@@ -279,6 +281,21 @@ input[type="radio"] {
 .person_id_area {
   margin: 0;
   flex-grow: 1;
+}
+
+.msg_alert.show {
+  display: block;
+}
+
+.msg_alert {
+  color: red;
+  font-size: 14px;
+  position: relative;
+  flex-grow: 1;
+}
+
+.d-mb, .msg_alert {
+  display: none;
 }
 
 .note,
@@ -319,7 +336,6 @@ input[type="radio"] {
 }
 
 .btn_area a {
-  /* width: 320px; */
   border: none;
   border-radius: 5px;
   background-color: #015387;
