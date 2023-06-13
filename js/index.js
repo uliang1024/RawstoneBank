@@ -4,6 +4,8 @@ let cardBrand2 = document.querySelector("#card-brand2");
 let visa = document.querySelectorAll(".VISA");
 let element1 = document.getElementById("carouselExampleIndicators");
 let element2 = document.getElementById("carouselExampleIndicators2");
+let element11 = document.getElementById("carouselExampleIndicators11");
+let element22 = document.getElementById("carouselExampleIndicators22");
 let cardType = document.getElementById("cardType");
 
 // 为第一个链接添加点击事件处理程序
@@ -13,8 +15,10 @@ cardBrand1.addEventListener("click", function (event) {
   clearRadioSelection();
   // 显示第一个元素
   element1.classList.add("active");
+  element11.classList.add("active");
   // 隐藏第二个元素
   element2.classList.remove("active");
+  element22.classList.remove("active");
   // 添加/移除 active 焦点类名
   cardBrand1.classList.add("active");
   cardBrand2.classList.remove("active");
@@ -27,8 +31,10 @@ cardBrand2.addEventListener("click", function (event) {
   clearRadioSelection();
   // 显示第一个元素
   element2.classList.add("active");
+  element22.classList.add("active");
   // 隐藏第二个元素
   element1.classList.remove("active");
+  element11.classList.remove("active");
   // 添加/移除 active 焦点类名
   cardBrand2.classList.add("active");
   cardBrand1.classList.remove("active");
@@ -99,7 +105,6 @@ IDNumber.addEventListener("blur", function () {
 
   // 验证身份证有效性
   var isValid = isTWIDValid(idNumber);
-  console.log(isValid);
   // 根据验证结果执行操作
   if (isValid) {
     IDAlert.classList.remove("show");
@@ -210,6 +215,67 @@ birthday.addEventListener("keydown", function (event) {
   }
 });
 
+const birthdayAlert = document.querySelector("#birthday-alert");
+
+birthday.addEventListener("blur", function () {
+  let birthdayValue = birthday.value;
+
+  // 验证身份证有效性
+  var isValid = isBirthdayValid(birthdayValue);
+  // 根据验证结果执行操作
+  if (isValid) {
+    birthdayAlert.classList.remove("show");
+  } else {
+    birthdayAlert.classList.add("show");
+  }
+});
+
+function isBirthdayValid(birthdayValue) {
+  // 验证生日格式是否为YYYY/MM/DD
+  const birthdayRegex = /^\d{4}\/\d{2}\/\d{2}$/;
+  if (!birthdayRegex.test(birthdayValue)) {
+    birthdayAlert.textContent = "▲ 請輸入正確日期格式";
+    return false;
+  }
+
+  // 获取当前日期
+  const currentDate = new Date();
+
+  // 解析生日日期
+  const birthdayDate = new Date(birthdayValue);
+
+  const parsedDate = moment(birthdayValue, "YYYY/MM/DD", true);
+
+  if (!parsedDate.isValid()) {
+    birthdayAlert.textContent = "▲ 請輸入正確日期格式";
+    return false;
+  }
+
+  // 验证生日日期是否大于等于当前日期
+  if (birthdayDate >= currentDate) {
+    birthdayAlert.textContent = "▲ 你是未來人？";
+    return false;
+  }
+
+  // 计算年龄
+  const age = currentDate.getFullYear() - birthdayDate.getFullYear();
+
+  // 验证年龄是否小于18岁
+  if (age < 18) {
+    birthdayAlert.textContent = "▲ 信用卡線上申請須年滿18歲";
+    return false;
+  }
+
+  // 验证生日日期是否超过一世纪
+  currentDate.setFullYear(currentDate.getFullYear() - 100);
+  if (birthdayDate < currentDate) {
+    birthdayAlert.textContent = "▲ 你是古人嗎";
+    return false;
+  }
+
+  return true;
+}
+
 // --------------------
 
 //驗證碼
@@ -280,30 +346,48 @@ function generateRandomCaptcha(callback) {
 
 // ---------------------
 
-// // 获取表单和按钮元素
-// const form = document.querySelector("#myForm");
-// const btnArea = document.querySelector(".btn_area");
+// 获取表单和按钮元素
+const form = document.querySelector("#myForm");
+const btnArea = document.querySelector(".btn_area a");
+const cardBrand = document.querySelectorAll(".card-brand");
 
-// // 添加输入字段的事件监听器
-// form.addEventListener("input", function () {
-//   // 进行表单验证
-//   var isValid = validateForm();
+cardBrand.forEach((brand) => {
+  brand.addEventListener("click", () => {
+    btnArea.classList.add("disable");
+  });
+});
 
-//   // 根据验证结果更新按钮状态
-//   if (isValid) {
-//     button.classList.remove("disable");
-//   } else {
-//     button.classList.add("disable");
-//   }
-// });
+// 添加输入字段的事件监听器
+form.addEventListener("input", function () {
+  // 进行表单验证
+  var isValid = validateForm();
+  // 根据验证结果更新按钮状态
+  if (isValid) {
+    btnArea.classList.remove("disable");
+  } else {
+    btnArea.classList.add("disable");
+  }
+});
 
-// // 表单验证函数
-// function validateForm() {
-//   // 根据您的验证逻辑判断表单字段是否有效
-//   // 返回 true 或 false，表示表单是否有效
-//   // 示例中的逻辑是检查两个输入字段是否都有值
-//   var input1 = document.getElementById("input1").value;
-//   var input2 = document.getElementById("input2").value;
+// 表单验证函数
+function validateForm() {
+  const input1 = document.getElementById("ID-number").value.trim();
+  const input2 = document.getElementById("birthday").value.trim();
+  const captchaInput = document.getElementById("captcha-input").value.trim();
+  const checkboxes = document.querySelectorAll(
+    '.fornotefx input[type="checkbox"]'
+  );
+  const checkedCheckboxes = Array.from(checkboxes)
+    .slice(0, 5)
+    .filter((checkbox) => checkbox.checked);
 
-//   return input1 !== "" && input2 !== "";
-// }
+  if (
+    captchaInput.length === 0 ||
+    !isTWIDValid(input1) ||
+    !isBirthdayValid(input2) ||
+    checkedCheckboxes.length !== 5
+  ) {
+    return false;
+  }
+  return true;
+}
