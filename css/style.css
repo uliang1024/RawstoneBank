@@ -36,8 +36,15 @@ main {
 }
 
 .title {
+  width: 592px;
   height: 80px;
-  margin: 20px auto 0;
+  margin: 30px auto 0;
+}
+
+@media screen and (max-width: 815px) {
+  .title {
+    width: 100%;
+  }
 }
 
 .title h1 {
@@ -380,6 +387,7 @@ input[type="radio"] {
   display: flex;
   position: relative;
   z-index: 10;
+  padding: 0;
 }
 
 .step-wizard-item {
@@ -389,7 +397,7 @@ input[type="radio"] {
   display: flex;
   flex-direction: column;
   text-align: center;
-  min-width: 140px;
+  /* min-width: 140px; */
   position: relative;
 }
 .step-wizard-item + .step-wizard-item:after {
@@ -477,6 +485,52 @@ input[type="radio"] {
 
 #id-box {
   display: none;
+}
+
+.progress-area .row,
+.uploaded-area .row {
+  background: #e9f0ff;
+  margin-bottom: 10px;
+  list-style: none;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-area .row i,
+.uploaded-area .row i {
+  font-size: 30px;
+  color: #6990f2;
+}
+
+.progress-area .details span,
+.uploaded-area .details span {
+  font-size: 14px;
+}
+
+.progress-area .details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+  justify-content: space-between;
+}
+
+.uploaded-area .row .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.uploaded-area .row .details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.uploaded-area .details .size {
+  font-size: 11px;
+  color: #40404099;
 }
 
 #money-box.show {

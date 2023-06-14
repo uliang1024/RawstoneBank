@@ -1,31 +1,74 @@
-const addCard = document.querySelector("#add-card");
+const cardFiles = document.querySelectorAll(".card-file");
+const fileInputs = document.querySelectorAll(".file-input");
+const uploadedAreas = document.querySelectorAll(".uploaded-area");
 
-addCard.addEventListener("click", function () {
-  // 创建新的HTML内容
-  var newContent = `
-      <div class="row px-3">
-        <div class="col-md-6 d-flex justify-content-center">
-          <div class="card text-center" style="width: 18rem; height: 11rem; cursor: pointer;">
-            <div class="card-body d-flex flex-column justify-content-center align-items-center" style="background: #f6f6f6">
-              <i class="fa-regular fa-hand-pointer mb-2" style="font-size: 3.5em; color: #3b3b3b96"></i>
-              <a href="#" class="btn btn-primary rounded-0 border-0" style="background-color: #3a95ce">上傳財力證明</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-          <div class="card text-center" style="width: 18rem; height: 11rem; cursor: pointer;">
-            <div class="card-body d-flex flex-column justify-content-center align-items-center" style="background: #f6f6f6">
-              <i class="fa-regular fa-hand-pointer mb-2" style="font-size: 3.5em; color: #3b3b3b96"></i>
-              <a href="#" class="btn btn-primary rounded-0 border-0" style="background-color: #3a95ce">上傳財力證明</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-  // 在指定的元素前插入新的HTML内容
-  addCard.insertAdjacentHTML("beforebegin", newContent);
+// 为每个卡片绑定点击事件
+cardFiles.forEach((cardFile, index) => {
+  cardFile.addEventListener("click", () => {
+    fileInputs[index].click();
+  });
 });
+
+// 监听文件选择事件
+fileInputs.forEach((fileInput, index) => {
+  fileInput.onchange = ({ target }) => {
+    let file = target.files[0];
+    if (file) {
+      let fileName = file.name;
+      if (fileName.length >= 11) {
+        let splitName = fileName.split(".");
+        splitName = splitName[0].substring(0, 11) + "... ." + splitName[1];
+        fileName = splitName;
+      }
+
+      let fileSize = file.size;
+      let fileSizeString = "";
+
+      if (fileSize < 1024) {
+        fileSizeString = fileSize + " B"; // 小于1KB，以字节为单位
+      } else if (fileSize < 1024 * 1024) {
+        fileSizeString = (fileSize / 1024).toFixed(2) + " KB"; // 小于1MB，以KB为单位，保留两位小数
+      } else if (fileSize < 30 * 1024 * 1024) {
+        fileSizeString = (fileSize / (1024 * 1024)).toFixed(2) + " MB"; // 小于30MB，以MB为单位，保留两位小数
+      } else {
+        console.log("文件大小超过30MB");
+        return;
+      }
+
+      // 检查文件格式和文件名
+      let allowedFormats = ["jpg", "jpeg"];
+      let fileFormat = fileName.split(".").pop().toLowerCase();
+
+      if (!allowedFormats.includes(fileFormat)) {
+        console.log("上传文件格式限制为 JPG、JPEG");
+        return;
+      }
+
+      console.log(fileSizeString); // 显示文件大小
+
+      uploadFile(fileName, fileSizeString, index);
+    }
+  };
+});
+
+function uploadFile(name, size, index) {
+  let uploadedHTML = `<li class="row">
+                        <div class="col-2"><i class="fas fa-file-alt"></i></div>
+                        <div class="col-10">
+                          <div class="content">
+                            <div class="details">
+                              <span class="name">${name}．Uploaded</span>
+                              <span class="size">${size}</span>
+                            </div>
+                            <i class="fas fa-check"></i>
+                          </div>
+                        </div>
+                      </li>`;
+  uploadedAreas[index].innerHTML = ""; // 清空对应的 uploadedArea 的内容
+  uploadedAreas[index].insertAdjacentHTML("afterbegin", uploadedHTML);
+}
+
+// -----------------------------
 
 const openCloseMoney = document.querySelector("#open-close-money");
 const openCloseId = document.querySelector("#open-close-id");
@@ -57,4 +100,37 @@ openCloseMoney.addEventListener("click", function () {
     openCloseMoneyIcon.classList.add("fa-minus");
     openCloseMoneyIcon.classList.remove("fa-plus");
   }
+});
+
+// -----------------------------
+
+const addCard = document.querySelector("#add-card");
+
+addCard.addEventListener("click", function () {
+  // 创建新的HTML内容
+  var newContent = `
+      <div class="row px-3">
+        <div class="col-md-6 d-flex justify-content-center">
+          <div class="card text-center" style="width: 18rem; height: 11rem; cursor: pointer;">
+            <div class="card-file card-body d-flex flex-column justify-content-center align-items-center" style="height: 11rem; background: #f6f6f6; flex: unset;">
+              <input type="file" class="file-input" hidden />
+              <i class="fa-regular fa-hand-pointer mb-2" style="font-size: 3.5em; color: #3b3b3b96"></i>
+              <a href="#" class="btn btn-primary rounded-0 border-0" style="background-color: #3a95ce">上傳財力證明</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <div class="card text-center" style="width: 18rem; height: 11rem; cursor: pointer;">
+            <div class="card-file card-body d-flex flex-column justify-content-center align-items-center" style="height: 11rem; background: #f6f6f6; flex: unset;">
+              <input type="file" class="file-input" hidden />
+              <i class="fa-regular fa-hand-pointer mb-2" style="font-size: 3.5em; color: #3b3b3b96"></i>
+              <a href="#" class="btn btn-primary rounded-0 border-0" style="background-color: #3a95ce">上傳財力證明</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+  // 在指定的元素前插入新的HTML内容
+  addCard.insertAdjacentHTML("beforebegin", newContent);
 });

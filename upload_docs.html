@@ -33,7 +33,9 @@
             <span class="progress-label">線上認證</span>
           </li>
           <li class="step-wizard-item current-item">
-            <span class="progress-count"><img id="head" src="./images/head.png" alt=""></span>
+            <span class="progress-count"
+              ><img id="head" src="./images/head.png" alt=""
+            /></span>
             <span class="progress-label">上傳證件</span>
           </li>
           <li class="step-wizard-item">
@@ -76,12 +78,14 @@
               <div class="col-md-6 d-flex justify-content-center">
                 <div
                   class="card text-center"
-                  style="width: 18rem; height: 11rem; cursor: pointer"
+                  style="width: 18rem; cursor: pointer"
                 >
                   <div
-                    class="card-body d-flex flex-column justify-content-center align-items-center"
-                    style="background: #f6f6f6"
+                    id="card-front"
+                    class="card-file card-body d-flex flex-column justify-content-center align-items-center"
+                    style="height: 11rem; background: #f6f6f6; flex: unset"
                   >
+                    <input type="file" class="file-input" hidden />
                     <i
                       class="fa-regular fa-hand-pointer mb-2"
                       style="font-size: 3.5em; color: #3b3b3b96"
@@ -93,17 +97,45 @@
                       >身分證正面</a
                     >
                   </div>
+                  <!-- <div class="progress-area">
+                    <li class="row">
+                      <div class="col-2">
+                        <i class="fas fa-file-alt"></i>
+                      </div>
+                      <div class="col-10">
+                        <div class="content w-100">
+                          <div class="details">
+                            <span class="name">image_01.jpg．Uploading</span>
+                            <span class="percent">50%</span>
+                          </div>
+                          <div class="progress" style="height: 6px">
+                            <div
+                              class="progress-bar progress-bar-striped progress-bar-animated"
+                              role="progressbar"
+                              aria-valuenow="75"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                              style="width: 75%"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </div> -->
+                  <div class="uploaded-area"></div>
                 </div>
               </div>
               <div class="col-md-6 d-flex justify-content-center">
                 <div
                   class="card text-center"
-                  style="width: 18rem; height: 11rem; cursor: pointer"
+                  style="width: 18rem; cursor: pointer"
                 >
                   <div
-                    class="card-body d-flex flex-column justify-content-center align-items-center"
-                    style="background: #f6f6f6"
+                    id="card-back"
+                    class="card-file card-body d-flex flex-column justify-content-center align-items-center"
+                    style="height: 11rem; background: #f6f6f6; flex: unset"
                   >
+                    <input type="file" class="file-input" hidden />
                     <i
                       class="fa-regular fa-hand-pointer mb-2"
                       style="font-size: 3.5em; color: #3b3b3b96"
@@ -115,6 +147,7 @@
                       >身分證反面</a
                     >
                   </div>
+                  <div class="uploaded-area"></div>
                 </div>
               </div>
             </div>
@@ -143,12 +176,13 @@
               <div class="col-md-6 d-flex justify-content-center">
                 <div
                   class="card text-center"
-                  style="width: 18rem; height: 11rem; cursor: pointer"
+                  style="width: 18rem; cursor: pointer"
                 >
                   <div
-                    class="card-body d-flex flex-column justify-content-center align-items-center"
-                    style="background: #f6f6f6"
+                    class="card-file card-body d-flex flex-column justify-content-center align-items-center"
+                    style="height: 11rem; background: #f6f6f6; flex: unset"
                   >
+                  <input type="file" class="file-input" hidden />
                     <i
                       class="fa-regular fa-hand-pointer mb-2"
                       style="font-size: 3.5em; color: #3b3b3b96"
@@ -160,17 +194,19 @@
                       >上傳財力證明</a
                     >
                   </div>
+                  <div class="uploaded-area"></div>
                 </div>
               </div>
               <div class="col-md-6 d-flex justify-content-center">
                 <div
                   class="card text-center"
-                  style="width: 18rem; height: 11rem; cursor: pointer"
+                  style="width: 18rem; cursor: pointer"
                 >
                   <div
-                    class="card-body d-flex flex-column justify-content-center align-items-center"
-                    style="background: #f6f6f6"
+                    class="card-file card-body d-flex flex-column justify-content-center align-items-center"
+                    style="height: 11rem; background: #f6f6f6; flex: unset"
                   >
+                  <input type="file" class="file-input" hidden />
                     <i
                       class="fa-regular fa-hand-pointer mb-2"
                       style="font-size: 3.5em; color: #3b3b3b96"
@@ -182,6 +218,7 @@
                       >上傳財力證明</a
                     >
                   </div>
+                  <div class="uploaded-area"></div>
                 </div>
               </div>
             </div>
