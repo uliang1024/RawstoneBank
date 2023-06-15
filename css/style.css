@@ -489,7 +489,6 @@ input[type="radio"] {
 
 .progress-area .row,
 .uploaded-area .row {
-  background: #e9f0ff;
   margin-bottom: 10px;
   list-style: none;
   padding: 10px 0px;
@@ -501,7 +500,6 @@ input[type="radio"] {
 .progress-area .row i,
 .uploaded-area .row i {
   font-size: 30px;
-  color: #6990f2;
 }
 
 .progress-area .details span,
@@ -539,6 +537,16 @@ input[type="radio"] {
 
 #money-box {
   display: none;
+}
+
+.card-file {
+  position: relative;
+}
+
+.card-file img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
 }
 
 /* ------------------- */
