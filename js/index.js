@@ -351,6 +351,12 @@ const form = document.querySelector("#myForm");
 const btnArea = document.querySelector(".btn_area a");
 const cardBrand = document.querySelectorAll(".card-brand");
 
+document.getElementById('disabledLink').addEventListener('click', function(event) {
+  if (btnArea.classList.contains('disable')) {
+    event.preventDefault(); // 阻止默认的点击行为
+  }
+});
+
 cardBrand.forEach((brand) => {
   brand.addEventListener("click", () => {
     btnArea.classList.add("disable");
