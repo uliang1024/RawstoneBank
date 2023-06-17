@@ -550,7 +550,7 @@ input[type="radio"] {
   object-fit: cover; 
 }
 
-/* ------------------- */
+/* ---------下一步(按鈕)---------- */
 
 .btn_area {
   text-align: center;
@@ -593,3 +593,215 @@ footer img {
   display: block;
   margin: 12px auto;
 }
+
+/* ------ inform ------ */
+
+.Card-block-address[data-v-e5e59192],
+.Card-block-UPOR[data-v-e5e59192],
+.industry-category[data-v-e5e59192],
+.Card-block-HR-phone[data-v-e5e59192],
+.check-block-UPOR-tel {
+  width: 100%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  margin-top: 20px;
+}
+
+.check-block-UPOR-mtel {
+  width: 550px;
+  display: flex;
+  margin-left: 0px;
+}
+
+.Card-block-HR,
+.Card-block-HR-phone,
+.check-block-UPOR-tel {
+  margin-top: 30px;
+}
+
+.person_id_area {
+  width: auto;
+  padding-left: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.form-check-input,
+.tel-code {
+  margin-left: 10px;
+}
+
+.form-check-label {
+  font-size: 10px;
+}
+
+.process {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+/*.footer .wrap {
+  padding-top: 30px;
+}
+
+.footer__warning {
+  background-color: white;
+  display: table;
+  table-layout: fixed;
+  padding: 30px 50px;
+}
+
+.footer__warning .footer__left {
+  width: 130px;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 18px;
+  color: #6d6d6d;
+  line-height: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.footer__warning .footer__right {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #6d6d6d;
+  line-height: 25px;
+  text-align: justify;
+  letter-spacing: 2px;
+  word-break: break-all;
+}
+.footer__copyright {
+  text-align: center;
+  padding: 22px 0;
+  color: #a7a7a7;
+}
+
+.c-name {
+  height: 80px;
+  margin: 35px auto 20px;
+  text-align: center;
+}*/
+
+.process {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+  margin: 0 auto 30px auto;
+}
+
+.process .step {
+  height: 110px;
+  position: relative;
+  flex-grow: 1;
+  align-items: end;
+  justify-content: center;
+  display: flex;
+  color: white;
+  font-weight: 600;
+}
+
+.process .step::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 0;
+}
+.process .step:first-child:before {
+  width: 50%;
+  left: 50%;
+}
+.process .step:nth-child(4):before {
+  width: 50%;
+  right: 50%;
+}
+
+.process .step::after {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: white;
+  position: absolute;
+  top: calc(50% - 7px);
+  left: calc(50% - 7px);
+  border-radius: 7px;
+}
+.process .iconimg {
+  width: 54px;
+  height: 54px;
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+}
+
+.Req {
+  color: red;
+}
+
+.names {
+  flex: auto;
+  width: 500px;
+}
+
+.infos {
+  background-color: transparent;
+}
+
+.notice {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 10px 0 20px;
+}
+
+#hide_area_1 {
+  display: none;
+}
+
+#hide_area_1.show {
+  display: block;
+}
+
+#hide_area_2 {
+  display: none;
+}
+
+#hide_area_2.show {
+  display: block;
+}
+
+#hide_area_3 {
+  display: none;
+}
+
+#hide_area_3.show {
+  display: block;
+}
+
+#hide_area_4 {
+  display: none;
+}
+
+#hide_area_4.show {
+  display: block;
+}
+
+#hide_area_5 {
+  display: none;
+}
+
+#hide_area_5.show {
+  display: block;
+}
+
+/* ----------- */

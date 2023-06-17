@@ -33,7 +33,7 @@ fileInputs.forEach((fileInput, index) => {
       } else if (fileSize < 30 * 1024 * 1024) {
         fileSizeString = (fileSize / (1024 * 1024)).toFixed(2) + " MB"; // 小于30MB，以MB为单位，保留两位小数
       } else {
-        fileName = "文件大小超过30MB";
+        fileName = "文件大小超過30MB";
         success = false;
       }
 
